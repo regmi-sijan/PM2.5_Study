@@ -91,3 +91,19 @@ python -m unittest discover -s PCA_SR -p 'test_*.py' -v
 ```
 
 Tests use synthetic data; actual study rankings require the original workbook.
+
+## Completed local workbook run
+
+The county rankings from `PCA/Meterological data ALAbama .xlsx` are available in
+[published_results](published_results/). The [PDF report](output/pdf/county_pca_variable_rankings.pdf)
+contains a summary, each county's ordered results and chart, and methods.
+The published run uses the default 80% variance target and records the input
+workbook SHA-256 in its metadata. The workbook itself is not part of this update.
+
+To reproduce the analysis and report from the repository root:
+
+```sh
+python PCA_SR/pca_variable_ranking.py 'PCA/Meterological data ALAbama .xlsx' --output PCA_SR/published_results
+python -m pip install reportlab
+python PCA_SR/build_report.py
+```
