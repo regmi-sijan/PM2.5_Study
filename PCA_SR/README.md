@@ -1,5 +1,7 @@
 # County-wise PCA variable screening (Python)
 
+For the current six-model forecasting experiment, use [pooled_county_study/README.md](pooled_county_study/README.md). For seven descriptive and historical prediction analyses, see [initial_study/README.md](initial_study/README.md). The instructions below describe only weather PCA screening.
+
 This independent workflow adapts the workbook sheet names, six weather variables,
 and standardized county-wise PCA approach from `../PCA/code/pca_analysis.R`.
 It starts with **all six variables**, without copying the R script's predetermined
@@ -18,11 +20,11 @@ python PCA_SR/pca_variable_ranking.py '/path/to/workbook.xlsx'
 python PCA_SR/pca_variable_ranking.py '/path/to/workbook.xlsx' --counties Baldwin Morgan
 ```
 
-The input workbook is not included. Its sheets and column names must match the
+The source workbook is included at `PCA/Meterological_data_ALAbama.xlsx` and copied to `PCA_SR/Meterological_data_ALAbama_copy.xlsx`. Its sheets and column names must match the
 original R workflow. Sheets: Baldwin, Clay, Dekalb, Etohaw, Jefferson_NB, Mobile,
 Montgomery, Morgan, Sumter, Tuscaloosa. Columns: Temperature, Dew Point,
 Relative Humidity, Wind Speed, Pressure, Precipitation. PM2.5 is optional and ignored.
-No raw observations are exported or uploaded.
+This PCA script does not export raw observations.
 
 ## What the ranking means
 
@@ -80,7 +82,7 @@ Each county receives `variable_ranking.csv` (most to least contribution),
 county's ranking separate. `run_summary.json` records thresholds, row counts,
 excluded variables, retained variance, and software versions.
 
-Generated results and Excel files are ignored by Git. Running again overwrites
+Local PCA results are ignored by Git; explicit exceptions include the source copy, merged workbook and published pooled results. Running again overwrites
 matching outputs; use a distinct output folder when comparing settings. Existing
 outputs from counties not selected in a later run are left in place.
 
@@ -94,16 +96,16 @@ Tests use synthetic data; actual study rankings require the original workbook.
 
 ## Completed local workbook run
 
-The county rankings from `PCA/Meterological data ALAbama .xlsx` are available in
+The county rankings from `PCA/Meterological_data_ALAbama.xlsx` are available in
 [published_results](published_results/). The [PDF report](output/pdf/county_pca_variable_rankings.pdf)
 contains a summary, each county's ordered results and chart, and methods.
 The published run uses the default 80% variance target and records the input
-workbook SHA-256 in its metadata. The workbook itself is not part of this update.
+workbook SHA-256 in its metadata. The renamed workbook is included in this update.
 
 To reproduce the analysis and report from the repository root:
 
 ```sh
-python PCA_SR/pca_variable_ranking.py 'PCA/Meterological data ALAbama .xlsx' --output PCA_SR/published_results
+python PCA_SR/pca_variable_ranking.py 'PCA/Meterological_data_ALAbama.xlsx' --output PCA_SR/published_results
 python -m pip install reportlab
 python PCA_SR/build_report.py
 ```

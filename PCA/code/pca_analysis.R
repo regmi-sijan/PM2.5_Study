@@ -106,6 +106,7 @@ if (length(user_args) >= 1) {
   file_path <- user_args[1]
 } else {
   candidate_files <- c(
+    file.path(project_root, "Meterological_data_ALAbama.xlsx"),
     file.path(
       project_root,
       "data",
