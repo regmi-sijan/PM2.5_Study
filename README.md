@@ -1,5 +1,9 @@
 # Alabama PM2.5 study
 
+![Alabama county map highlighting the ten study counties](PCA_SR/initial_study/study_area_map/Alabama_study_counties.png)
+
+All 67 Alabama counties are shown; the ten study counties are highlighted. [Map sources and code](PCA_SR/initial_study/study_area_map/README.md).
+
 Daily 2025 observations from ten Alabama county-labeled monitoring series. The repository contains exploratory analyses, weather PCA, source matching, maps, neighboring-county comparisons and classical/deep-learning forecasting.
 
 ## Start here: pooled forecasting
