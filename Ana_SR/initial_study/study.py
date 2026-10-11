@@ -841,7 +841,7 @@ def study7(data):
 def overview():
     quality=pd.read_csv(ROOT/"data_quality_by_county.csv")
     text="# Initial PM2.5 study: seven analyses\n\n" \
-         "Source: `PCA_SR/Meterological_data_ALAbama_copy.xlsx`. Period: January 1–December 31, 2025. " \
+         "Source: `Ana_SR/Meterological_data_ALAbama_copy.xlsx`. Period: January 1–December 31, 2025. " \
          "Ten county-labeled daily series. Source workbook preserved. Concentration and weather units " \
          "are unverified, so no regulatory exceedance or health-risk classification is made.\n\n" \
          "## Data quality\n\n"+table(quality[["county","observed_pm25","missing_pm25","negative_pm25","constant_weather"]])+"\n\n" \

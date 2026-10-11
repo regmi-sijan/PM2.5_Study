@@ -97,7 +97,7 @@ The script also records `sessionInfo()` to document the R environment used for a
 
 ## Data Availability
 
-The original secondary-data workbook is included as `Meterological_data_ALAbama.xlsx`. From the repository root, run `Rscript PCA/code/pca_analysis.R PCA/Meterological_data_ALAbama.xlsx`. Source matching and remaining provenance limitations are documented in `PCA_SR/initial_study/07_prediction/model_comparison/source_verification/SOURCE_FINDINGS.md`. No new license is asserted for secondary source data.
+The original secondary-data workbook is included as `Meterological_data_ALAbama.xlsx`. From the repository root, run `Rscript Ana_SK/code/pca_analysis.R Ana_SK/Meterological_data_ALAbama.xlsx`. Source matching and remaining provenance limitations are documented in `Ana_SR/initial_study/07_prediction/model_comparison/source_verification/SOURCE_FINDINGS.md`. No new license is asserted for secondary source data.
 
 ## Repository Context
 

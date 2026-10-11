@@ -26,7 +26,7 @@ The table comes from [saved run metadata](published_results/run_summary.json) an
 For the current six-model forecasting experiment, use [pooled_county_study/README.md](pooled_county_study/README.md). For seven descriptive and historical prediction analyses, see [initial_study/README.md](initial_study/README.md). The instructions below describe only weather PCA screening.
 
 This independent workflow adapts the workbook sheet names, six weather variables,
-and standardized county-wise PCA approach from `../PCA/code/pca_analysis.R`.
+and standardized county-wise PCA approach from `../Ana_SK/code/pca_analysis.R`.
 It starts with **all six variables**, without copying the R script's predetermined
 variable removals. PM2.5 is not used to construct or rank the components.
 
@@ -35,15 +35,15 @@ variable removals. PM2.5 is not used to construct or rank the components.
 From the repository root, with Python 3.10 or newer:
 
 ```sh
-python3 -m venv PCA_SR/.venv
-source PCA_SR/.venv/bin/activate
-python -m pip install -r PCA_SR/requirements.txt
-python PCA_SR/pca_variable_ranking.py '/path/to/workbook.xlsx'
+python3 -m venv Ana_SR/.venv
+source Ana_SR/.venv/bin/activate
+python -m pip install -r Ana_SR/requirements.txt
+python Ana_SR/pca_variable_ranking.py '/path/to/workbook.xlsx'
 # Optional subset (use original workbook sheet names):
-python PCA_SR/pca_variable_ranking.py '/path/to/workbook.xlsx' --counties Baldwin Morgan
+python Ana_SR/pca_variable_ranking.py '/path/to/workbook.xlsx' --counties Baldwin Morgan
 ```
 
-The source workbook is included at `PCA/Meterological_data_ALAbama.xlsx` and copied to `PCA_SR/Meterological_data_ALAbama_copy.xlsx`. Its sheets and column names must match the
+The source workbook is included at `Ana_SK/Meterological_data_ALAbama.xlsx` and copied to `Ana_SR/Meterological_data_ALAbama_copy.xlsx`. Its sheets and column names must match the
 original R workflow. Sheets: Baldwin, Clay, Dekalb, Etohaw, Jefferson_NB, Mobile,
 Montgomery, Morgan, Sumter, Tuscaloosa. Columns: Temperature, Dew Point,
 Relative Humidity, Wind Speed, Pressure, Precipitation. PM2.5 is optional and ignored.
@@ -97,7 +97,7 @@ No imputation, KMO/Bartlett tests, or PM2.5 regression is performed here.
 
 ## Outputs
 
-Default output: `PCA_SR/results/` (override with `--output PATH`).
+Default output: `Ana_SR/results/` (override with `--output PATH`).
 
 Each county receives `variable_ranking.csv` (most to least contribution),
 `variable_ranking.png`, `explained_variance.csv`, `correlation_loadings.csv`, and
@@ -112,14 +112,14 @@ outputs from counties not selected in a later run are left in place.
 ## Tests
 
 ```sh
-python -m unittest discover -s PCA_SR -p 'test_*.py' -v
+python -m unittest discover -s Ana_SR -p 'test_*.py' -v
 ```
 
 Tests use synthetic data; actual study rankings require the original workbook.
 
 ## Completed local workbook run
 
-The county rankings from `PCA/Meterological_data_ALAbama.xlsx` are available in
+The county rankings from `Ana_SK/Meterological_data_ALAbama.xlsx` are available in
 [published_results](published_results/). The [PDF report](output/pdf/county_pca_variable_rankings.pdf)
 contains a summary, each county's ordered results and chart, and methods.
 The published run uses the default 80% variance target and records the input
@@ -128,7 +128,7 @@ workbook SHA-256 in its metadata. The renamed workbook is included in this updat
 To reproduce the analysis and report from the repository root:
 
 ```sh
-python PCA_SR/pca_variable_ranking.py 'PCA/Meterological_data_ALAbama.xlsx' --output PCA_SR/published_results
+python Ana_SR/pca_variable_ranking.py 'Ana_SK/Meterological_data_ALAbama.xlsx' --output Ana_SR/published_results
 python -m pip install reportlab
-python PCA_SR/build_report.py
+python Ana_SR/build_report.py
 ```

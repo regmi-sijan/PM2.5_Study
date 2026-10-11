@@ -416,18 +416,5 @@
     "07_prediction/heldout_selected_forecasts.png",
     "07_prediction/heldout_mae_heatmap.png"
   ],
-  "note": "Numerical/structural checks only; visual review is recorded separately.",
-  "visual_review": {
-    "all_14_figures_reviewed_in_contact_sheet": true,
-    "full_resolution_heatmaps_reviewed": [
-      "02_monthly_patterns/monthly_heatmap.png",
-      "07_prediction/heldout_mae_heatmap.png"
-    ],
-    "outcome": "Labels, legends, layout and heatmap text contrast reviewed; no visible clipping."
-  },
-  "html_checks": {
-    "embedded_pngs": 14,
-    "all_internal_navigation_targets_present": true,
-    "code_hash_matches_metadata": true
-  }
+  "note": "Numerical/structural checks only; visual review is recorded separately."
 }

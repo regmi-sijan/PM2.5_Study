@@ -9,21 +9,21 @@ From the repository root:
 ```sh
 git remote -v
 git status --short
-git add --dry-run -- README.md GITHUB_UPDATE.md .gitignore PCA PCA_SR
+git add --dry-run -- README.md GITHUB_UPDATE.md .gitignore Ana_SK Ana_SR
 ```
 
-The workbook rename is intentional. `PCA/Meterological data ALAbama .xlsx` becomes `PCA/Meterological_data_ALAbama.xlsx` without changing file contents. The analysis copy and merged workbook are included explicitly by ignore-rule exceptions. `pooled_county_study/results/` is included to preserve this completed experiment; new runs should use separate directories.
+The workbook rename is intentional. `Ana_SK/Meterological data ALAbama .xlsx` becomes `Ana_SK/Meterological_data_ALAbama.xlsx` without changing file contents. The analysis copy and merged workbook are included explicitly by ignore-rule exceptions. `pooled_county_study/results/` is included to preserve this completed experiment; new runs should use separate directories.
 
 ## Verify and commit
 
 After activating the pooled-study environment:
 
 ```sh
-cd PCA_SR/pooled_county_study
+cd Ana_SR/pooled_county_study
 python -m unittest -v test_pipeline.py
 python verify_results.py
 cd ../..
-git add -- README.md GITHUB_UPDATE.md .gitignore PCA PCA_SR
+git add -- README.md GITHUB_UPDATE.md .gitignore Ana_SK Ana_SR
 git diff --cached --stat
 git diff --cached --check
 git commit -m "Add reproducible pooled PM2.5 study and documented analyses"

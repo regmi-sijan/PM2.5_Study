@@ -7,7 +7,7 @@ in `study.py` so data handling stays consistent across all seven studies.
 
 ## Input and data quality
 
-- Input defaults to `PCA_SR/Meterological_data_ALAbama_copy.xlsx`. Both workbook
+- Input defaults to `Ana_SR/Meterological_data_ALAbama_copy.xlsx`. Both workbook
   copies are preserved. No Excel cells are changed.
 - Ten county-labeled sheets, daily calendar January 1–December 31, 2025. Sheet
   labels Dekalb/Etohaw/Jefferson_NB map to DeKalb/Etowah/Jefferson. This does not

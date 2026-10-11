@@ -30,7 +30,7 @@ def main():
                     d[d.county.eq(study.NAMES.get(sheet,sheet))].pm25.to_numpy(),equal_nan=True)
         for sheet,source in raw.items()))
     check("source workbook copies unchanged and identical",hashlib.sha256((ROOT.parent/"Meterological_data_ALAbama_copy.xlsx").read_bytes()).digest()==
-          hashlib.sha256((ROOT.parent.parent/"PCA"/"Meterological_data_ALAbama.xlsx").read_bytes()).digest())
+          hashlib.sha256((ROOT.parent.parent/"Ana_SK"/"Meterological_data_ALAbama.xlsx").read_bytes()).digest())
     check("11 negative readings retained",d.pm25.lt(0).sum()==11)
     summary=pd.read_csv(ROOT/study.FOLDERS[1]/"county_summary.csv").set_index("county")
     check("county means reconcile independently",np.allclose(summary["mean"].sort_index(),d.groupby("county").pm25.mean().sort_index()))

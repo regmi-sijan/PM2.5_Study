@@ -11,8 +11,8 @@ import pandas as pd
 ROOT=Path(__file__).resolve().parent
 WORKBOOK=ROOT.parents[3]/'Meterological_data_ALAbama_copy.xlsx'
 if not WORKBOOK.exists():
-    candidates=[ROOT.parents[4]/'PCA'/'Meterological_data_ALAbama.xlsx',
-                ROOT.parents[4]/'PCA'/'Meterological data ALAbama .xlsx']
+    candidates=[ROOT.parents[4]/'Ana_SK'/'Meterological_data_ALAbama.xlsx',
+                ROOT.parents[4]/'Ana_SK'/'Meterological data ALAbama .xlsx']
     WORKBOOK=next((p for p in candidates if p.exists()),WORKBOOK)
 SITES={'Baldwin':10,'Clay':1,'Dekalb':1003,'Etohaw':10,'Jefferson_NB':23,
        'Mobile':3,'Montgomery':1002,'Morgan':11,'Sumter':3,'Tuscaloosa':11}

@@ -13,7 +13,7 @@ PyTorch release from the official installation page.
 In Terminal:
 
 ```sh
-cd /Users/sijanregmi/Documents/Codex/2026-10-11/can/PM2.5_Study/PCA_SR/initial_study/07_prediction/cnn_lstm
+cd /Users/sijanregmi/Documents/Codex/2026-10-11/can/PM2.5_Study/Ana_SR/initial_study/07_prediction/cnn_lstm
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
@@ -29,7 +29,7 @@ Auto mode probes forward/backward Conv1D-LSTM operations before choosing MPS.
 The runtime prints the actual selected device. CPU can be faster for this tiny
 network; MPS availability is not a promise of acceleration.
 
-The default workbook is the existing copied Excel file in PCA_SR. The input
+The default workbook is the existing copied Excel file in Ana_SR. The input
 workbook and previous study results are preserved. Outputs go into `results/`.
 Reruns overwrite matching results; choose a new folder when comparing settings:
 
@@ -104,7 +104,7 @@ preprocessing. The ensemble includes all specified seeds; it never chooses a
 seed based on test performance. Seed prediction SD is not a prediction interval.
 
 Persistence is scored on exactly the same test dates. If the prior study's daily
-prediction table is present, its ridge/PCA/forest and preselected-model predictions
+prediction table is present, its ridge/Ana_SK/forest and preselected-model predictions
 are compared on those same county-days, with an observation-consistency check.
 The previous models trained separately per county, while this network is pooled;
 performance differences cannot be attributed to architecture alone.

@@ -37,7 +37,7 @@ This folder preserves the earlier exploratory study and its original methods. Fo
 
 From this folder, create a separate Python 3.12 environment, install `requirements.txt`, then run `python study.py --study all` and `python verify.py`. Each numbered folder has an `analysis.py` entry point; maps, adjacency and neural comparisons have separate scripts. Running the original studies overwrites their matching outputs. Both source workbooks are included in this update.
 
-Source: `PCA_SR/Meterological_data_ALAbama_copy.xlsx`. Period: January 1–December 31, 2025. Ten county-labeled daily series. Source workbook preserved. Concentration and weather units are unverified, so no regulatory exceedance or health-risk classification is made.
+Source: `Ana_SR/Meterological_data_ALAbama_copy.xlsx`. Period: January 1–December 31, 2025. Ten county-labeled daily series. Source workbook preserved. Concentration and weather units are unverified, so no regulatory exceedance or health-risk classification is made.
 
 ## Data quality
 

@@ -73,18 +73,18 @@ for c in meta['counties']:
     if county in ('Mobile','Montgomery'):
         story.append(p('Some neighboring scores are extremely close. The numerical order is preserved, but this is not evidence of a meaningful difference in importance.','SmallNote'))
 story += [PageBreak(),p('Method and reproducibility','Title'),
-          p('Input','Heading2'),p('Source workbook: PCA/Meterological_data_ALAbama.xlsx. All ten worksheets were matched to the county names used in the original R code. Dekalb, Etohaw and Jefferson_NB are displayed as DeKalb, Etowah and Jefferson.'),
+          p('Input','Heading2'),p('Source workbook: Ana_SK/Meterological_data_ALAbama.xlsx. All ten worksheets were matched to the county names used in the original R code. Dekalb, Etohaw and Jefferson_NB are displayed as DeKalb, Etowah and Jefferson.'),
           p('Procedure','Heading2'),p('All six meteorological variables were considered in each county. All-missing and constant columns were excluded before complete-case deletion. Remaining observations were centered and scaled with sample standard deviations. Singular value decomposition produced the PCA eigenvalues and eigenvectors.'),
           p('The smallest number of PCs reaching 80% cumulative variance was retained. For each variable j, communality equals the sum of eigenvalue(k) times eigenvector(j,k) squared across retained components. Importance equals 100 times that communality divided by the sum of all included variable communalities.'),
           p('Flags and interpretation','Heading2'),p('Low representation: communality below 0.50. Redundancy: absolute pairwise correlation at least 0.90 on the PCA complete-case rows. Thresholds are exploratory choices. Rankings depend on the retained components and do not provide uncertainty intervals. Variables are not automatically deleted based on rank.'),
           p('The existing R analysis used fixed county-specific removals. This run intentionally starts with all six weather variables, so its PCA results need not match the R benchmarks. No PM2.5 association or prediction model is fitted.'),
-          p('Reproduction','Heading2'),p('From the repository root, run:<br/><font face="Courier" size="8">python PCA_SR/pca_variable_ranking.py<br/>"PCA/Meterological_data_ALAbama.xlsx"<br/>--output PCA_SR/published_results</font><br/>Join these three lines into one shell command.'),
-          p('Run metadata, full-precision CSV tables, loadings, correlation matrices and charts accompany this PDF in PCA_SR/published_results. The PDF builder is PCA_SR/build_report.py and requires reportlab.'),
+          p('Reproduction','Heading2'),p('From the repository root, run:<br/><font face="Courier" size="8">python Ana_SR/pca_variable_ranking.py<br/>"Ana_SK/Meterological_data_ALAbama.xlsx"<br/>--output Ana_SR/published_results</font><br/>Join these three lines into one shell command.'),
+          p('Run metadata, full-precision CSV tables, loadings, correlation matrices and charts accompany this PDF in Ana_SR/published_results. The PDF builder is Ana_SR/build_report.py and requires reportlab.'),
           p(f"Analysis environment: Python {meta['python']}; NumPy {meta['numpy']}; pandas {meta['pandas']}.",'SmallNote')]
 def footer(canvas, doc):
     canvas.setFont('Helvetica',8)
     canvas.setFillColor(colors.HexColor('#64748b'))
-    canvas.drawString(42,25,'PCA_SR | County-wise weather variable screening')
+    canvas.drawString(42,25,'Ana_SR | County-wise weather variable screening')
     canvas.drawRightString(570,25,str(doc.page))
 SimpleDocTemplate(str(OUT),pagesize=(612,792),rightMargin=42,leftMargin=42,
                   topMargin=38,bottomMargin=42,title='County-wise PCA weather variable rankings').build(story,onFirstPage=footer,onLaterPages=footer)

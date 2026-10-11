@@ -7,7 +7,7 @@ __pycache__/
 *.log
 *.tmp
 *.inspect.ndjson
-PCA_SR/pooled_county_study/data/workbook_payload.json
-PCA_SR/pooled_county_study/results_new/
-PCA_SR/pooled_county_study/smoke_results/
-PCA_SR/pooled_county_study/*_run/
+Ana_SR/pooled_county_study/data/workbook_payload.json
+Ana_SR/pooled_county_study/results_new/
+Ana_SR/pooled_county_study/smoke_results/
+Ana_SR/pooled_county_study/*_run/
