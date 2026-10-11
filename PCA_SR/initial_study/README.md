@@ -1,5 +1,36 @@
 # Initial PM2.5 study: seven analyses
 
+## Results summary at a glance
+
+This summarizes the [unchanged initial findings PDF](PM25_findings_summary.pdf). It describes the original experiment: **3,591 observed concentrations**, with 11 negative values retained and sensitivity checks. The later pooled study uses a stricter cleaning policy and is a separate experiment.
+
+### County and weather findings
+
+- **Jefferson had the highest annual mean (10.12)**, versus DeKalb's 6.30, approximately 61% higher. Middle-ranked counties often had overlapping uncertainty intervals.
+- **Clay had the highest single-day reading (48.50)** despite a mean of 6.71. Typical concentration and extreme events tell different stories.
+- Wind had the most consistent negative adjusted relationship: coefficients were negative with adjusted q < 0.05 in **9 of 10 counties**. These observational associations do not establish causation.
+- Temperature, dew point and humidity were strongly redundant. Rainfall evidence was inconsistent, and Sumter's constant rainfall could not support a coefficient. Baldwin and Mobile shared the same weather values on jointly observed days.
+
+![Annual county concentration distributions](01_county_comparison/county_boxplots.png)
+
+### Initial next-day prediction comparison
+
+July-September chronological validation selected settings; fixed models fitted on January-September were evaluated on **897 shared October-December county-days**, using daily updated lagged observations. Lower MAE/RMSE is better; concentrations use micrograms per cubic meter as supported by later source matching.
+
+| Approach | Test MAE | Test RMSE |
+| --- | ---: | ---: |
+| Training-period mean | 2.878 | 3.498 |
+| Persistence | 2.476 | 3.299 |
+| Ridge: lags and calendar | 2.507 | 3.104 |
+| Ridge: adding lagged weather | 2.281 | 2.868 |
+| Ridge: weather PCA components | 2.298 | 2.867 |
+| Random forest | 2.270 | 2.876 |
+| Validation-selected model per county | 2.276 | 2.876 |
+
+The validation-selected approach reduced pooled MAE by approximately **8%** versus persistence, improving in 7/10 counties but doing worse in Baldwin, Mobile and Sumter. Weather improved the ridge comparison; weather PCA did not improve pooled error over original weather variables. The selected forecasts still overpredicted, with pooled bias **+0.87**. County improvements were uncertain in most locations.
+
+One year does not establish repeated seasonality, long-term trends or causal effects. The later use of these test months makes subsequent comparisons exploratory. [Detailed methods](METHODS.md), [prediction results](07_prediction/REPORT.md) and the seven sections below retain uncertainty and sensitivity analyses. For the newer tuned neural/classical experiment, see [pooled results](../pooled_county_study/README.md#results-summary-at-a-glance).
+
 ## Current experiment and provenance update
 
 This folder preserves the earlier exploratory study and its original methods. For three-fold tuning and the current six-model comparison, use [../pooled_county_study/README.md](../pooled_county_study/README.md). Later [source matching](07_prediction/model_comparison/source_verification/SOURCE_FINDINGS.md) supports PM2.5 units of micrograms per cubic meter; weather provenance remains partly unresolved. Statements below describing units as unverified reflect the initial analysis date.

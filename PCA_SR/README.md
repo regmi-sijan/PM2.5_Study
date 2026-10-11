@@ -1,5 +1,28 @@
 # County-wise PCA variable screening (Python)
 
+## Results summary at a glance
+
+This is the completed **weather PCA screening** summarized in [the unchanged PDF](output/pdf/county_pca_variable_rankings.pdf). All ten counties and six candidate weather variables were considered; components were retained to explain at least 80% of standardized weather variance.
+
+| County | Complete weather rows | Retained PCs | Variance explained | Top-ranked variable | Contribution |
+| --- | ---: | ---: | ---: | --- | ---: |
+| Baldwin | 363 | 3 | 84.3% | Dew Point | 18.9% |
+| Clay | 365 | 3 | 83.4% | Dew Point | 19.1% |
+| DeKalb | 365 | 3 | 82.7% | Dew Point | 19.4% |
+| Etowah | 357 | 4 | 91.4% | Dew Point | 18.2% |
+| Jefferson | 365 | 4 | 91.0% | Precipitation | 18.1% |
+| Mobile | 359 | 3 | 85.0% | Dew Point | 18.7% |
+| Montgomery | 357 | 4 | 91.9% | Dew Point | 18.1% |
+| Morgan | 362 | 3 | 80.5% | Dew Point | 20.1% |
+| Sumter | 351 | 3 | 91.1% | Wind Speed | 21.3% |
+| Tuscaloosa | 365 | 3 | 82.9% | Dew Point | 19.1% |
+
+**Interpretation:** contribution is a variable's share of variance represented by the retained components. It is not PM2.5 predictive importance, a causal effect or statistical significance. Temperature and dew point are highly redundant in several counties; Sumter's constant precipitation cannot enter scaled PCA. This Python screening starts with all variables and differs from the R workflow's predetermined removals.
+
+![Example county PCA ranking](published_results/Baldwin/variable_ranking.png)
+
+The table comes from [saved run metadata](published_results/run_summary.json) and [all county rankings](published_results/all_county_rankings.csv). For concentration forecasting rather than weather variance, use [the pooled study](pooled_county_study/README.md#results-summary-at-a-glance).
+
 For the current six-model forecasting experiment, use [pooled_county_study/README.md](pooled_county_study/README.md). For seven descriptive and historical prediction analyses, see [initial_study/README.md](initial_study/README.md). The instructions below describe only weather PCA screening.
 
 This independent workflow adapts the workbook sheet names, six weather variables,

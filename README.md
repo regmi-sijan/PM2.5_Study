@@ -26,6 +26,16 @@ python verify_results.py --data data/merged_counties.xlsx --results results_new
 
 All ten counties and the full year are processed. Missing/invalid targets are excluded rather than imputed. The saved full run used 3,650 panel rows, 3,580 observed cleaned PM2.5 values, 1,783 validation cases and 887 shared test cases, with all candidate configurations, three stochastic seeds and 1,000 bootstrap replicates. It was not a smoke run. See [full-run evidence](PCA_SR/pooled_county_study/FULL_RUN_VERIFICATION.md).
 
+## Read results directly on GitHub
+
+Each PDF now has an inline README summary with tables and figures:
+
+- [Weather PCA results](PCA_SR/README.md#results-summary-at-a-glance)
+- [Initial county, weather and prediction findings](PCA_SR/initial_study/README.md#results-summary-at-a-glance)
+- [Current pooled classical/neural comparison](PCA_SR/pooled_county_study/README.md#results-summary-at-a-glance)
+
+The original PDFs remain available and unchanged.
+
 ## Repository guide
 
 | Location | Contents |

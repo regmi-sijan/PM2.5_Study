@@ -1,5 +1,35 @@
 # Pooled Alabama county PM2.5 prediction study
 
+## Results summary at a glance
+
+This summarizes the [unchanged four-page PDF](PM25_Pooled_County_Study_Summary.pdf). All ten counties were merged into **3,650 county-days**, with **3,580 observed cleaned concentrations**. Three expanding chronological folds supplied 1,783 validation cases; final October-December evaluation used **887 shared county-days**. Five learned families were tuned; persistence has no trainable settings. Stochastic predictions average three seeds.
+
+| Model | Mean validation MAE | Test MAE | Test RMSE | High-day test MAE |
+| --- | ---: | ---: | ---: | ---: |
+| CNN-LSTM | 1.915 | 2.113 | 2.734 | 4.435 |
+| LSTM | 1.876 | 2.133 | 2.750 | 4.448 |
+| Ridge | 1.934 | 2.186 | 2.823 | 4.312 |
+| CNN-only | 2.075 | 2.186 | 2.870 | 3.872 |
+| Random forest | 1.902 | 2.191 | 2.808 | 4.370 |
+| Persistence | 1.990 | 2.478 | 3.299 | 3.674 |
+
+MAE and RMSE use micrograms per cubic meter; lower is better. Validation MAE is an unweighted average of three folds and participated in tuning. High-day error uses only **27** cases above county-specific January-September 95th percentiles.
+
+![Validation and test model comparison](results/model_comparison.png)
+
+### What the results support
+
+- **LSTM led validation (1.876); CNN-LSTM narrowly led the test (2.113).** CNN-LSTM reduced test MAE by about 14.7% versus persistence.
+- The hybrid-minus-LSTM MAE difference was **-0.0201**, with a paired 95% seven-day block-bootstrap interval **[-0.0558, 0.0088]**. It crosses zero: a reliable benefit from adding CNN is not demonstrated. LSTM remains a simpler competitive starting point.
+- All learned families improved overall test MAE, but **persistence performed best on high days** (3.674 versus hybrid 4.435). Average accuracy does not establish better pollution-peak prediction.
+- County winners differed: CNN-LSTM led five counties, LSTM three, random forest Etowah and ridge Mobile. Jefferson had the largest errors and Sumter the smallest. Hybrid MAE was 1.833 in coastal Baldwin and 1.837 in Mobile; this does not identify geography as the cause.
+
+![County test MAE](results/county_mae.png)
+
+**Limits:** only one year is available, test months had already been inspected, nearby counties/shared weather create dependence, and weather provenance remains partly unresolved. These are site observations, not county-wide averages. Bootstrap intervals are pointwise and conditional on fitted models. Stronger conclusions require untouched years and a separate peak-prediction objective.
+
+See [full findings](STUDY_RESULTS_AND_CONCLUSIONS.md), [verification evidence](FULL_RUN_VERIFICATION.md) and [saved numerical results](results/README.md). Setup and full-run commands follow below.
+
 This separate study merges all ten county worksheets into one panel and compares persistence, ridge regression, random forest, CNN-only, LSTM-only and CNN-LSTM using three expanding-window validation folds. Every model implementation and candidate grid has its own file in `models/`. Shared code handles preparation, temporal windows, fitting, evaluation and forecasting.
 
 ## Files and data
